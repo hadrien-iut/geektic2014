@@ -1,5 +1,7 @@
 package com.ninja_squad.geektic.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +18,19 @@ import com.ninja_squad.geektic.entity.Interet;
 @RequestMapping("/api/interet")
 public class InteretService {
 
+	@Autowired
 	private InteretDao dao;
 
-	@Autowired
-	public InteretService(InteretDao dao) {
-		super();
-		this.dao = dao;
+	public InteretService() {
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public Interet getInteret(@PathVariable("id") Long id){
 		return dao.findById(id);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public List<Interet> getAllInteret(){
+		return dao.findAll();
 	}
 }

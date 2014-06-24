@@ -1,6 +1,7 @@
 package com.ninja_squad.geektic.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
@@ -9,11 +10,10 @@ import com.ninja_squad.geektic.entity.Geek;
 @Repository
 public class GeekDao {
 
+	@PersistenceContext
 	private EntityManager entityManager;
 
-	public GeekDao(EntityManager entityManager) {
-		super();
-		this.entityManager = entityManager;
+	public GeekDao() {
 	}
 	
 	public Geek findById(Long id){

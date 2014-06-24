@@ -16,12 +16,10 @@ import com.ninja_squad.geektic.entity.Geek;
 @RequestMapping("/api/geek")
 public class GeekService {
 	
-	private GeekDao dao;
-
 	@Autowired
-	public GeekService(GeekDao dao) {
-		super();
-		this.dao = dao;
+	private GeekDao dao;
+	
+	public GeekService() {
 	}
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)

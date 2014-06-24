@@ -17,7 +17,7 @@ import javax.persistence.SequenceGenerator;
 public class Interet {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="interet_seq")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="gen_interet")
 	private Long id;
 	
 	private String libelle;

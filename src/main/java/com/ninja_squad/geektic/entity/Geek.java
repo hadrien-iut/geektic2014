@@ -19,7 +19,7 @@ import javax.persistence.SequenceGenerator;
 public class Geek {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="geek_seq")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="gen_geek")
 	private Long id;
 	
 	private String nom;
@@ -28,7 +28,7 @@ public class Geek {
 	
 	private String mail;
 	
-	@OneToMany(mappedBy = "interet")
+	@OneToMany(mappedBy = "geeks")
 	private Set<Interet> interets;
 	
 	public Long getId() {

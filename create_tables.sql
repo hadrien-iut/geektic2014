@@ -16,9 +16,7 @@ id numeric not null,
 nom varchar(255) not null,
 prenom varchar(255) not null,
 mail varchar(255) not null,
-id_interet integer not null,
-primary key (id),
-foreign key (id_interet) references interet(id));
+primary key (id));
 
 create table geek_interet (
 	id_interet numeric not null,

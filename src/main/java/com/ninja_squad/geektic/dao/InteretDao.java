@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
@@ -14,11 +15,10 @@ import com.ninja_squad.geektic.entity.Interet;
 @Repository
 public class InteretDao {
 	
+	@PersistenceContext
 	private EntityManager entityManager;
 
-	public InteretDao(EntityManager entityManager) {
-		super();
-		this.entityManager = entityManager;
+	public InteretDao() {
 	}
 	
 	
