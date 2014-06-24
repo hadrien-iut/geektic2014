@@ -1,5 +1,7 @@
 package com.ninja_squad.geektic.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,11 @@ public class GeekService {
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
 	public Geek getGeek(@PathVariable("id") Long id){
 		return dao.findById(id);
+	}
+	
+	@RequestMapping(value="/{sexe}/{id}", method = RequestMethod.GET)
+	public List<Geek> getGeekBySexeAndInteret(@PathVariable("sexe") String sexe, @PathVariable("id") Long idInteret){
+		return dao.findBySexeAndInteret(sexe, idInteret);
 	}
 
 }

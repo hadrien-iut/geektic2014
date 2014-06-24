@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
 
@@ -26,9 +26,11 @@ public class Geek {
 	
 	private String prenom;
 	
+	private String sexe;
+	
 	private String mail;
 	
-	@OneToMany(mappedBy = "geeks")
+	@ManyToMany(mappedBy = "geeks")
 	private Set<Interet> interets;
 	
 	public Long getId() {
@@ -61,6 +63,14 @@ public class Geek {
 
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	
+	public String getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
 	}
 
 	public Set<Interet> getInterets() {

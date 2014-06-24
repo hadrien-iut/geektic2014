@@ -27,12 +27,15 @@ app.controller('HomeCtrl', function($scope, $http) {
 	$scope.sexe = "M";
 	$scope.monInteret = "";
 	
+	$scope.cacher = true;
+	
     $http.get('/api/interet').success(function(data) {
         $scope.interets = data;
     });
     
     $scope.rechercher = function () {
-    	console.log($scope.sexe);
-    	console.log($scope.monInteret);
+    	if($scope.monInteret== ""){
+    		
+    	}
     };
 });

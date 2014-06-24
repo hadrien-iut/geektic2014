@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -28,8 +29,11 @@ public class GeekDao {
 	}
 	
 	public List<Geek> findBySexeAndInteret(String sexe, Long idInteret){
-		String jpql = "select g from Geek as g where g.sexe = :sexe";
-		TypedQuery<Geek> query = entityManager.createQuery(jpql, Spectacle.class);
+		String jpql = "select g from Geek as g join g.interets as i left outer join fetch g.interets where g.sexe like :sexe and i.id = :idInteret";
+		TypedQuery<Geek> query = entityManager.createQuery(jpql, Geek.class);
 		query.setParameter("sexe", sexe);
+		query.setParameter("idInteret", idInteret);
+		List<Geek> geeks = query.getResultList();
+		return geeks;
 	}
 }
