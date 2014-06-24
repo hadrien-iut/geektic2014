@@ -2,10 +2,11 @@
 
 <html ng-app="geektic">
     <head>
+    	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
         <title>Geektic</title>
     </head>
-    <body ng-controller="HelloCtrl">
-        <h1>{{ helloMessage.message }}</h1>
+    <body ng-view>
+        
 
         <script src="/js/angular.js"></script>
         <script src="/js/angular-route.js"></script>

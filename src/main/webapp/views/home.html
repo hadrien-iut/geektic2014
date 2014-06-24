@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body ng-controller="HomeCtrl">
+	<section >
+		<h1 class="text-center">
+			<span class="label label-primary ">G</span>
+			<span class="label label-success ">E</span>
+			<span class="label label-info ">E</span>
+			<span class="label label-warning ">K</span>
+			<span class="label label-danger ">T</span>
+			<span class="label label-primary ">I</span>
+			<span class="label label-success ">C</span>
+		</h1>
+		<br>
+		<h3 class="text-center text-success"> Trouvez le ou la bonne GEEK !!</h3>
+	</section>
+	<br>
+	<br>
+	<br>
+	<br>
+	
+	<section>
+		
+		<form name="search">
+	  		<dir class= "row">
+	  			<dir class="col-md-4 text-right">
+	  				<h4 class="text-primary"><span>Sexe : </span></h4>
+	  			</dir>
+	  			<dir class="col-md-1">
+		  			<input type="radio" ng-model="sexe" value="M"> Homme 
+	  			</dir>
+	  			<dir class="col-md-1">
+	  				<input type="radio" ng-model="sexe" value="F"> Femme
+	  			</dir>
+	  		</dir>
+	  		<br>
+	  		<dir class= "row">  			
+	  			<dir class="col-md-4 text-right">
+	  				<h4 class="text-danger"><span>Interet : </span></h4>
+	  			</dir>
+	  			<dir class="col-md-4">
+		  			<select class="form-control text-primary text-center" ng-model="monInteret" ng-options="interet.libelle for interet in interets">
+				      <option value=""> Choisi ton interet </option>
+				    </select>
+	  			</dir>
+	  		</dir>
+	  		<br>
+	  		<dir class= "row">
+		  		<dir class="col-md-7">
+		  		</dir>		  		
+		  		<dir class="col-md-1">
+		  			<button class="btn btn-success" ng-click="rechercher()">Rechercher</button>
+		  		</dir>		  		
+	  		</dir>
+	  	</form>
+	</section>
+</body>
+</html>

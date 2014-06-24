@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @SequenceGenerator(sequenceName = "interet_seq", name = "gen_interet")
@@ -22,6 +24,7 @@ public class Interet {
 	
 	private String libelle;
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "GEEK_INTERET", joinColumns = @JoinColumn(name = "ID_INTERET"), inverseJoinColumns = @JoinColumn(name = "ID_GEEK"))
 	private Set<Geek> geeks;
