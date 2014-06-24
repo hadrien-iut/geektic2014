@@ -32,4 +32,8 @@ public class InteretDao {
 		List<Interet> interets = query.getResultList();
 		return interets;
 	}
+	
+	public Interet findById(Long id){
+		return entityManager.find(Interet.class, id);
+	}
 }

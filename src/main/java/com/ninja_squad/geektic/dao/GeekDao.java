@@ -16,6 +16,10 @@ public class GeekDao {
 		this.entityManager = entityManager;
 	}
 	
+	public Geek findById(Long id){
+		return entityManager.find(Geek.class, id);
+	}
+	
 	public void persist(Geek geek){
 		entityManager.persist(geek);
 	}
