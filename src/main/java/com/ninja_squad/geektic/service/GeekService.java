@@ -29,5 +29,14 @@ public class GeekService {
 	public List<Geek> getGeekBySexeAndInteret(@PathVariable("sexe") Sexe sexe, @PathVariable("id") Long idInteret){
 		return dao.findBySexeAndInteret(sexe, idInteret);
 	}
-
+	
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public Geek getGeekById( @PathVariable("id") Long id){
+		return dao.findById(id);
+	}
+	
+	@RequestMapping(value="/{id}/{view}", method = RequestMethod.POST)
+	public void incrementView(@PathVariable("id") Long id, @PathVariable("view") Long view){
+		dao.persist(id, view);
+	}
 }

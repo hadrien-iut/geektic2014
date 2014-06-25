@@ -21,6 +21,13 @@ public class GeekDao {
 	public GeekDao() {
 	}
 	
+	public Geek findById(Long id){
+		String jpql = "select distinct g from Geek g left join fetch g.interets where g.id = :id";
+		TypedQuery<Geek> query = entityManager.createQuery(jpql, Geek.class);
+		query.setParameter("id", id);
+		return query.getSingleResult();
+	}
+	
 	public List<Geek> findBySexeAndInteret(Sexe sexe, Long idInteret){
 		String jpql = "select distinct g from Geek g left join fetch g.interets i inner join g.interets ir where g.sexe = :sexe and ir.id = :idInteret";
 		TypedQuery<Geek> query = entityManager.createQuery(jpql, Geek.class);
@@ -28,5 +35,11 @@ public class GeekDao {
 		query.setParameter("idInteret", idInteret);
 		List<Geek> list = query.getResultList();
 		return list;
+	}
+	
+	public void persist(Long id, Long view){
+		Geek geek = entityManager.find(Geek.class, id);
+		geek.setView(view);
+		entityManager.persist(geek);
 	}
 }

@@ -17,6 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 
 import com.ninja_squad.geektic.enumerator.Sexe;
+import com.ninja_squad.geektic.util.MD5Util;
 
 
 
@@ -39,6 +40,9 @@ public class Geek {
 	private Sexe sexe;
 	
 	private String mail;
+	
+	@Column(name= "view_prof")
+	private Long view;
 	
 	@ManyToMany
 	@JoinTable(name = "GEEK_INTERET", joinColumns = @JoinColumn(name = "ID_GEEK"), inverseJoinColumns = @JoinColumn(name = "ID_INTERET"))
@@ -91,4 +95,18 @@ public class Geek {
 	public void setInterets(Set<Interet> interets) {
 		this.interets = interets;
 	}
+	
+	public String getGravatar(){
+		return MD5Util.md5Hex(mail);
+	}
+
+	public Long getView() {
+		return view;
+	}
+
+	public void setView(Long view) {
+		this.view = view;
+	}
+	
+	
 }

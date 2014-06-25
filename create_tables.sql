@@ -17,6 +17,7 @@ nom varchar(255) not null,
 prenom varchar(255) not null,
 sexe varchar(1) not null,
 mail varchar(255) not null,
+view_prof numeric,
 primary key (id));
 
 create table geek_interet (
@@ -31,9 +32,6 @@ create sequence geek_seq start with 1000;
 create sequence interet_seq start with 1000;
 
 
-
-// DATA
-
 delete from geek_interet;
 delete from geek;
 delete from interet;
@@ -44,10 +42,10 @@ insert into interet values (3,'C#');
 insert into interet values (4,'Cobol');
 insert into interet values (5,'C++');
 
-insert into geek values (1, 'QUENIN', 'Hadrien', 'M', 'hadrien.quenin@etu.univ-lyon1.fr');
-insert into geek values (2, 'SIKHOUN', 'David', 'M', 'david.sikhoun@etu.univ-lyon1.fr');
-insert into geek values (3, 'ROUSSET', 'Vincent', 'M', 'vincent.rousset@etu.univ-lyon1.fr');
-insert into geek values (4, 'DUTRONC', 'Monique', 'F', 'monique.dutronc@etu.univ-lyon1.fr');
+insert into geek values (1, 'QUENIN', 'Hadrien', 'M', 'hadrien.quenin@etu.univ-lyon1.fr', 0);
+insert into geek values (2, 'SIKHOUN', 'David', 'M', 'david.sikhoun@etu.univ-lyon1.fr',0);
+insert into geek values (3, 'ROUSSET', 'Vincent', 'M', 'vincent.rousset@etu.univ-lyon1.fr',0);
+insert into geek values (4, 'DUTRONC', 'Monique', 'F', 'monique.dutronc@etu.univ-lyon1.fr',0);
 
 insert into geek_interet values (1,1);
 insert into geek_interet values (2,1);

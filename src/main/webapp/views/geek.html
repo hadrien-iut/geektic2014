@@ -4,7 +4,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body ng-controller="GeeksCtrl">
+<body>
 	<section >
 		<h1 class="text-center">
 			<span class="label label-primary ">G</span>
@@ -16,18 +16,14 @@
 			<span class="label label-success ">C</span>
 		</h1>
 		<br>
-		<h3 ng-show="cacher" class="text-center text-success"> Voici vos Geeks !!!</h3>
-		<h3 ng-hide="cacher" class="text-danger text-center bg-danger">Aucun Geek n'a ete trouve !!</h3>
 	</section>
-	<br>
-	<br>
-	<br>
-	<section ng-repeat="geek in geeks">
+	
+	<pre>
 		<div class="row">
-			<span> </span>
-		</div>
-		<div class="row">
-			<div class="col-md-1" ng-click="openGeek(geek.id)">
+			<div class="col-md-1" >
+				<span> Vue {{geek.view}} fois</span>
+			</div>
+			<div class="col-md-1" >
 				<img src="http://www.gravatar.com/avatar/{{geek.gravatar}}" class="img-thumbnail"/>
 			</div>
 			<div class="col-md-3">
@@ -46,10 +42,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<span> </span>
-			<br>
-		</div>
-	</section>
+	</pre>
 </body>
 </html>

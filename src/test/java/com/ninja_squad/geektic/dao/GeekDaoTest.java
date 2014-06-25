@@ -28,4 +28,9 @@ public class GeekDaoTest extends BaseDaoTest {
 	public void retourneLesGeeksParSexeEtParIdInteret(){
 		assertEquals(1, dao.findBySexeAndInteret(Sexe.M, 3L).size());
 	}
+	
+	@Test
+	public void retourneUnGeekParId(){
+		assertEquals("Hadrien", dao.findById(1L).getPrenom());
+	}
 }

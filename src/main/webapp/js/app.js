@@ -9,11 +9,11 @@ app.config(function($routeProvider){
 		.when('/mygeeks/:sexe/:id', {
         templateUrl: 'views/geeks.html',
         controller: 'GeeksCtrl'
+      })
+		.when('/geek/:id', {
+        templateUrl: 'views/geek.html',
+        controller: 'GeekCtrl'
       });
-//		.when('/register', {
-//        templateUrl: 'views/register.html',
-//        controller: 'RegisterCtrl'
-//      });
 	});
 
 app.controller('HelloCtrl', function($scope, $http) {
@@ -43,18 +43,37 @@ app.controller('HomeCtrl', function($scope, $http, $location) {
     };
 });
 
-app.controller('GeeksCtrl', function($scope, $routeParams, $http) {
+app.controller('GeeksCtrl', function($scope, $routeParams, $http, $location) {
 	$scope.sexe = $routeParams.sexe;
 	$scope.idInteret = $routeParams.id;
 	$scope.geeks = {};
 	$scope.cacher = true;
 	$http.get('/api/geek/' + $scope.sexe + '/' + $scope.idInteret).success(function(data) {
         $scope.geeks = data;
+
         if(data.length == 0){
         	$scope.cacher = false;
         }else {
         	$scope.cacher = true;
         }
     });
+	
+	$scope.openGeek = function(id){
+		$location.url("/geek/"+id);
+	};
+});
+
+app.controller('GeekCtrl', function($scope, $routeParams, $http, $location) {
+	$scope.geek = {};
+	$scope.id = $routeParams.id;
+	$http.get('/api/geek/'+$scope.id).success(function(data) {
+        $scope.geek = data;
+        $scope.geek.view += 1;
+        $http.post('/api/geek/'+$scope.id+'/'+$scope.geek.view).success(function(data) {
+    		console.log("gooood");
+    	});
+	});
+	
+	
 	
 });
