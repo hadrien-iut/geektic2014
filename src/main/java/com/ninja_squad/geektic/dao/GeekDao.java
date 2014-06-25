@@ -1,6 +1,9 @@
 package com.ninja_squad.geektic.dao;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -29,11 +32,12 @@ public class GeekDao {
 	}
 	
 	public List<Geek> findBySexeAndInteret(String sexe, Long idInteret){
-		String jpql = "select g from Geek as g join g.interets as i left outer join fetch g.interets where g.sexe like :sexe and i.id = :idInteret";
+		String jpql = "select distinct g from Geek g left join fetch g.interets i inner join g.interets ir where g.sexe = :sexe and ir.id = :idInteret";
 		TypedQuery<Geek> query = entityManager.createQuery(jpql, Geek.class);
 		query.setParameter("sexe", sexe);
 		query.setParameter("idInteret", idInteret);
-		List<Geek> geeks = query.getResultList();
-		return geeks;
+		List<Geek> list = query.getResultList();
+		Set<Geek> noDuplicates = new HashSet<>(list);
+		return new ArrayList<>(noDuplicates);
 	}
 }

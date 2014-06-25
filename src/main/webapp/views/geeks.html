@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body ng-controller="GeeksCtrl">
+	<section >
+		<h1 class="text-center">
+			<span class="label label-primary ">G</span>
+			<span class="label label-success ">E</span>
+			<span class="label label-info ">E</span>
+			<span class="label label-warning ">K</span>
+			<span class="label label-danger ">T</span>
+			<span class="label label-primary ">I</span>
+			<span class="label label-success ">C</span>
+		</h1>
+		<br>
+		<h3 class="text-center text-success"> Voici vos Geeks !!!</h3>
+	</section>
+	<br>
+	<br>
+	<br>
+	<pre ng-hide="cacher" class="bg-danger">
+		<h2 class="text-danger text-center">Aucun Geek n'a ete trouve</h2>
+	</pre>
+	<section ng-repeat="geek in geeks">
+		<div class="row">
+			<span> </span>
+		</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-3">
+				<span><strong>Nom :</strong> {{geek.nom}}</span><br>
+				<span><strong>Prenom :</strong> {{geek.prenom}}</span><br>
+				<span><strong>Mail :</strong> {{geek.mail}}</span>
+			</div>
+			<div class="col-md-2 text-right">
+				<span><strong>Ses interets : </strong></span>
+			</div>
+			<div class="col-md-6">
+				<div ng-repeat="interet in geek.interets">
+					<span>- {{interet.libelle}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<span> </span>
+			<br>
+		</div>
+	</section>
+</body>
+</html>

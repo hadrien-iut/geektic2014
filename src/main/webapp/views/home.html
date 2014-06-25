@@ -47,8 +47,9 @@
 				      <option value=""> Choisi ton interet </option>
 				    </select>
 	  			</dir>
-	  			<dir class="col-md-4">
-	  				<p ngClass="{hidden: cacher} bg-danger"> Veuillez renseigner votre interet </p>
+	  			<dir class="col-md-4 bg-danger" ng-hide="cacher">
+	  				<p class=" text-danger"> Veuillez renseigner votre interet </p>
+	  			</dir>
 	  		</dir>
 	  		<br>
 	  		<dir class= "row">
