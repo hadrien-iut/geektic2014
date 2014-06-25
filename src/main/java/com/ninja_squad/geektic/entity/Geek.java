@@ -2,14 +2,22 @@ package com.ninja_squad.geektic.entity;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+
+import com.ninja_squad.geektic.enumerator.Sexe;
+
 
 
 
@@ -26,11 +34,14 @@ public class Geek {
 	
 	private String prenom;
 	
-	private String sexe;
+	@Enumerated(EnumType.STRING)
+	@Column(name= "sexe")
+	private Sexe sexe;
 	
 	private String mail;
 	
-	@ManyToMany(mappedBy = "geeks")
+	@ManyToMany
+	@JoinTable(name = "GEEK_INTERET", joinColumns = @JoinColumn(name = "ID_GEEK"), inverseJoinColumns = @JoinColumn(name = "ID_INTERET"))
 	private Set<Interet> interets;
 	
 	public Long getId() {
@@ -65,11 +76,11 @@ public class Geek {
 		this.mail = mail;
 	}
 	
-	public String getSexe() {
+	public Sexe getSexe() {
 		return sexe;
 	}
 
-	public void setSexe(String sexe) {
+	public void setSexe(Sexe sexe) {
 		this.sexe = sexe;
 	}
 

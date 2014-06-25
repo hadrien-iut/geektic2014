@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ninja_squad.geektic.dao.GeekDao;
 import com.ninja_squad.geektic.entity.Geek;
+import com.ninja_squad.geektic.enumerator.Sexe;
 
 @RestController
 @Transactional
@@ -24,13 +25,8 @@ public class GeekService {
 	public GeekService() {
 	}
 	
-	@RequestMapping(value="/{id}", method = RequestMethod.GET)
-	public Geek getGeek(@PathVariable("id") Long id){
-		return dao.findById(id);
-	}
-	
 	@RequestMapping(value="/{sexe}/{id}", method = RequestMethod.GET)
-	public List<Geek> getGeekBySexeAndInteret(@PathVariable("sexe") String sexe, @PathVariable("id") Long idInteret){
+	public List<Geek> getGeekBySexeAndInteret(@PathVariable("sexe") Sexe sexe, @PathVariable("id") Long idInteret){
 		return dao.findBySexeAndInteret(sexe, idInteret);
 	}
 

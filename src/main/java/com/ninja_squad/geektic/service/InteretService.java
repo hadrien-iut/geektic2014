@@ -5,7 +5,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,11 +21,6 @@ public class InteretService {
 	private InteretDao dao;
 
 	public InteretService() {
-	}
-	
-	@RequestMapping(value="/{id}", method = RequestMethod.GET)
-	public Interet getInteret(@PathVariable("id") Long id){
-		return dao.findById(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
