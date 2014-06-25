@@ -33,4 +33,10 @@ public class GeekDaoTest extends BaseDaoTest {
 	public void retourneUnGeekParId(){
 		assertEquals("Hadrien", dao.findById(1L).getPrenom());
 	}
+	
+	@Test
+	public void incermenteLeNombreDeVuePourUnGeek(){
+		dao.persist(1L, 2L);
+		assertEquals(4L, dao.findById(1L).getView().longValue());
+	}
 }

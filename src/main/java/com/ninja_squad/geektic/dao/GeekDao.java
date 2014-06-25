@@ -38,8 +38,8 @@ public class GeekDao {
 	}
 	
 	public void persist(Long id, Long view){
-		Geek geek = entityManager.find(Geek.class, id);
+		Geek geek = findById(id);
 		geek.setView(view);
-		entityManager.persist(geek);
+		entityManager.merge(geek);
 	}
 }
